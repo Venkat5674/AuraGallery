@@ -1,0 +1,289 @@
+/* styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: #ffffff;
+  font-size: 2.5rem;
+}
+
+.gallery-container {
+  padding: 20px;
+  max-width: 1400px; /* Increased max-width for larger screens */
+  margin: 0 auto;
+}
+
+.gallery {
+  display: grid;
+  /* Increased minmax size for larger cards */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  padding-bottom: 75%; /* Changed from 100% to 75% for a more rectangular shape */
+  height: 400px; /* Fixed height for larger cards */
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff00;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Changed from cover to contain to show full image */
+  padding: 10px; /* Added padding to prevent image from touching the edges */
+  background-color: #ffffff00;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 95%;
+  max-height: 95vh;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 46px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ddd;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 30px;
+}
+
+.next-btn {
+  right: 30px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+  }
+
+  .gallery-item {
+      height: 300px;
+  }
+
+  .nav-btn {
+      padding: 15px;
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+  }
+
+  .gallery-item {
+      height: 250px;
+  }
+
+  .nav-btn {
+      padding: 12px;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+  }
+}
+
+/* Loading animation */
+.gallery-item.loaded {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.95);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+/* styles.css */
+/* ... (keep the existing styles until .gallery-container) ... */
+
+.gallery-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery {
+  display: grid;
+  /* Desktop - 4 images per row */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 15px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1; /* Creates a perfect square */
+  width: 100%;
+  height: 300px; /* Fixed height */
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff00;
+}
+
+/* Large Desktop (1440px and above) */
+@media screen and (min-width: 1440px) {
+  .gallery {
+      grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+      gap: 25px;
+  }
+  
+  .gallery-item {
+      height: 280px;
+  }
+}
+
+/* Regular Desktop (1024px to 1439px) */
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .gallery {
+      grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+      gap: 20px;
+  }
+  
+  .gallery-item {
+      height: 260px;
+  }
+}
+
+/* Tablet Landscape (768px to 1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  .gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+      gap: 15px;
+  }
+  
+  .gallery-item {
+      height: 240px;
+  }
+}
+
+/* Tablet Portrait (481px to 767px) */
+@media screen and (max-width: 767px) and (min-width: 481px) {
+  .gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+      gap: 15px;
+  }
+  
+  .gallery-item {
+      height: 220px;
+  }
+}
+
+/* Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+  .gallery {
+      grid-template-columns: repeat(1, 1fr); /* 1 image per row */
+      gap: 15px;
+  }
+  
+  .gallery-item {
+      height: 280px;
+  }
+}
+
+/* Adjust image display within gallery items */
+.gallery-item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  background-color: #ffffff00;
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Add hover effect for images */
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Keep the rest of your existing CSS styles (Modal, nav buttons, etc.) */
