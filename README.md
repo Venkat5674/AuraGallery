@@ -19,8 +19,7 @@ AuraGallery is a sleek, modern image gallery application designed to dynamically
 ---
 
 ## 🌐 Live Demo  
-Check out the live demo of AuraGallery here: [AuraGallery Live Demo](#) *(Replace # with your live demo URL)*  
-
+Check out the live demo of AuraGallery here: [AuraGallery](https://auragallery.netlify.app/)
 ---
 
 ## 🛠️ Technology Stack  
